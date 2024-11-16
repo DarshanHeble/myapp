@@ -49,7 +49,7 @@ class _MovieSearchScreenState extends State<MovieSearchScreen> {
                 ),
               ),
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 0),
             // Loading Indicator or Movie Cards
 
             searchProvider.isLoading
@@ -72,6 +72,7 @@ class _MovieSearchScreenState extends State<MovieSearchScreen> {
                                   left: 0, // Adjust left margin
                                   right: 0, // Adjust right margin
                                   child: Card(
+                                    color: Colors.white,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(12),
                                     ),
@@ -85,28 +86,37 @@ class _MovieSearchScreenState extends State<MovieSearchScreen> {
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
                                           // Reserve space for the image
-                                          const SizedBox(height: 60),
+                                          const SizedBox(height: 20),
                                           Row(
                                             children: [
                                               const SizedBox(
-                                                width: 125,
+                                                width: 105,
                                               ),
-                                              Column(children: [
-                                                Text(
-                                                  movie['Title'] ?? 'N/A',
-                                                  maxLines: 2,
-                                                  style: const TextStyle(
-                                                    fontSize: 18,
-                                                    fontWeight: FontWeight.bold,
-                                                  ),
-                                                ),
-                                                const SizedBox(height: 8),
-                                                Text(
-                                                  movie['Year'] ?? 'N/A',
-                                                  style: const TextStyle(
-                                                      color: Colors.grey),
-                                                ),
-                                              ])
+                                              Expanded(
+                                                child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Text(
+                                                        movie['Title'] ?? 'N/A',
+                                                        maxLines: 1,
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
+                                                        style: const TextStyle(
+                                                          fontSize: 18,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                        ),
+                                                      ),
+                                                      const SizedBox(height: 8),
+                                                      Text(
+                                                        movie['Year'] ?? 'N/A',
+                                                        style: const TextStyle(
+                                                            color: Colors.grey),
+                                                      ),
+                                                    ]),
+                                              )
                                             ],
                                           ),
                                         ],
@@ -127,7 +137,7 @@ class _MovieSearchScreenState extends State<MovieSearchScreen> {
                                       boxShadow: [
                                         BoxShadow(
                                           color: Colors.black.withOpacity(0.2),
-                                          blurRadius: 8,
+                                          // blurRadius: 8,
                                           offset: const Offset(0, 4),
                                         ),
                                       ],
